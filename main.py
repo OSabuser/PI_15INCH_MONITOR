@@ -50,5 +50,5 @@ if __name__ == '__main__':
     def on_draw():
         draw_everything(None)
 
-    pyglet.clock.schedule_interval(draw_everything, 1 / 60)
+    pyglet.clock.schedule_interval(draw_everything, 1 / 30)
     pyglet.app.run()
