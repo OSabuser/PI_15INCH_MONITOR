@@ -23,11 +23,11 @@ if __name__ == '__main__':
     mp4_file = load(path_to_video)
     player.queue(mp4_file)
     player.loop = True
-  
+
     pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
     floor_img = Sprite(image.load('1.png'), x=750, y=300, group=foreground)
 
-    win = Window(width=1024, height=768, fullscreen=True)
+    win = Window(width=1024, height=768, fullscreen=False)
     win.set_mouse_visible(visible=False)
 
     floor_state = ['0', '0']
@@ -37,13 +37,14 @@ if __name__ == '__main__':
     floor_number = ''
     direction = ''
     pic_img.visible = True
-    player.play()
+   # player.play()
 
     def draw_everything(dt):
-        if player.source and player.source.video_format:
-            player.get_texture().blit(0, 0)
-        #pic_img.draw()
-        #floor_img.draw()
+        win.clear()
+       # if player.source and player.source.video_format:
+            #player.get_texture().blit(0, 0)
+        pic_img.draw()
+        floor_img.draw()
 
     @win.event
     def on_draw():
