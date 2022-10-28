@@ -23,8 +23,7 @@ if __name__ == '__main__':
     mp4_file = load(path_to_video)
     player.queue(mp4_file)
     player.loop = True
-    player.play()
-
+  
     pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
     floor_img = Sprite(image.load('1.png'), x=750, y=300, group=foreground)
 
