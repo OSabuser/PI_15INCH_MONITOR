@@ -23,7 +23,7 @@ if __name__ == '__main__':
     pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
     floor_img = Sprite(image.load('1.png'), x=0, y=0, group=foreground)
 
-    win = Window(width=500, height=600, fullscreen=False, style=Window.WINDOW_STYLE_TRANSPARENT)
+    win = Window(width=500, height=600, fullscreen=False, style=Window.WINDOW_STYLE_TOOL)
     #win = Window(width=400, height=400, fullscreen=False, style=Window.WINDOW_STYLE_TRANSPARENT)
     win.set_mouse_visible(visible=False)
 
