@@ -6,6 +6,7 @@ from pyglet.media import Player, load
 from pyglet.window import Window
 from pyglet.sprite import Sprite
 from pyglet.gl import *
+from pyglet.window import Window
 
 pyglet.options['search_local_libs'] = True
 
@@ -19,16 +20,10 @@ if __name__ == '__main__':
     background = pyglet.graphics.OrderedGroup(0)
     foreground = pyglet.graphics.OrderedGroup(1)
 
-    player = Player()
-    mp4_file = load(path_to_video)
-    player.queue(mp4_file)
-    player.loop = True
-    player.play()
-
     pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
     floor_img = Sprite(image.load('1.png'), x=750, y=300, group=foreground)
 
-    win = Window(width=1024, height=768, fullscreen=True)
+    win = Window(width=1024, height=768, fullscreen=False, style=Window.WINDOW_STYLE_OVERLAY)
     win.set_mouse_visible(visible=False)
 
     floor_state = ['0', '0']
@@ -38,13 +33,11 @@ if __name__ == '__main__':
     floor_number = ''
     direction = ''
     pic_img.visible = True
-    player.play()
 
     def draw_everything(dt):
-        if player.source and player.source.video_format:
-            player.get_texture().blit(0, 0)
+
         pic_img.draw()
-        #floor_img.draw()
+        floor_img.draw()
 
     @win.event
     def on_draw():
