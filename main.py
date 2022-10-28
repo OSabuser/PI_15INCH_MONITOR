@@ -43,12 +43,12 @@ if __name__ == '__main__':
     def draw_everything(dt):
         if player.source and player.source.video_format:
             player.get_texture().blit(0, 0)
-        pic_img.draw()
+        #pic_img.draw()
         #floor_img.draw()
 
     @win.event
     def on_draw():
         draw_everything(None)
 
-    pyglet.clock.schedule_interval(draw_everything, 1 / 60)
+    pyglet.clock.schedule_interval(draw_everything, 1 / 100)
     pyglet.app.run()
