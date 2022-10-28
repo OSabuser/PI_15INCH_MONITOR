@@ -19,10 +19,10 @@ if __name__ == '__main__':
     background = pyglet.graphics.OrderedGroup(0)
     foreground = pyglet.graphics.OrderedGroup(1)
 
-    player = Player()
-    mp4_file = load(path_to_video)
-    player.queue(mp4_file)
-    player.loop = True
+    #player = Player()
+    #mp4_file = load(path_to_video)
+    #player.queue(mp4_file)
+    #player.loop = True
 
     pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
     floor_img = Sprite(image.load('1.png'), x=750, y=300, group=foreground)
@@ -50,5 +50,5 @@ if __name__ == '__main__':
     def on_draw():
         draw_everything(None)
 
-    pyglet.clock.schedule_interval(draw_everything, 1 / 35)
+    pyglet.clock.schedule_interval(draw_everything, 1 / 60)
     pyglet.app.run()
