@@ -23,7 +23,8 @@ if __name__ == '__main__':
     pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
     floor_img = Sprite(image.load('1.png'), x=750, y=300, group=foreground)
 
-    win = Window(width=1024, height=768, fullscreen=False, style=Window.WINDOW_STYLE_OVERLAY)
+    #win = Window(width=1024, height=768, fullscreen=False, style=Window.WINDOW_STYLE_OVERLAY)
+    win = Window(width=400, height=400, fullscreen=False, style=Window.WINDOW_STYLE_OVERLAY)
     win.set_mouse_visible(visible=False)
 
     floor_state = ['0', '0']
