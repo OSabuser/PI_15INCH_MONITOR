@@ -19,14 +19,14 @@ if __name__ == '__main__':
     background = pyglet.graphics.OrderedGroup(0)
     foreground = pyglet.graphics.OrderedGroup(1)
 
-    player = Player()
-    mp4_file = load(path_to_video)
-    player.queue(mp4_file)
-    player.loop = True
+   # player = Player()
+   # mp4_file = load(path_to_video)
+   # player.queue(mp4_file)
+   # player.loop = True
 
     pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
     floor_img = Sprite(image.load('1.png'), x=750, y=300, group=foreground)
-
+    animation = Sprite(pyglet.resource.animation(f"test.gif"), x=0, y=900, group=background)
     win = Window(width=1024, height=768, fullscreen=False)
     win.set_mouse_visible(visible=False)
 
@@ -37,14 +37,13 @@ if __name__ == '__main__':
     floor_number = ''
     direction = ''
     pic_img.visible = True
-    player.play()
+   # player.play()
 
     def draw_everything(dt):
         win.clear()
-        if player.source and player.source.video_format:
-            player.get_texture().blit(0, 0)
-        #pic_img.draw()
-        #floor_img.draw()
+        animation.draw()
+        pic_img.draw()
+        floor_img.draw()
 
     @win.event
     def on_draw():
