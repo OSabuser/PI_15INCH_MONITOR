@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageShow
 from dispmanx import DispmanX
 import numpy
 
-display = DispmanX(layer=33, pixel_format="RGBA", buffer_type="auto")
+display = DispmanX(layer=33, pixel_format="RGBA", buffer_type="numpy")
 
 image = Image.open('1.png')
 draw = ImageDraw.Draw(image)
