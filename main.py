@@ -127,5 +127,5 @@ while True:
 
         if mode in mode_list:
             arrow_state[0] = mode
-            print(f"RAW MODE: {arrow_state[0]}")
+            print(f"RAW MODE: {arrow_state}")
             arrow_state[1] = update_mode_img(arrow_state)
