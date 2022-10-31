@@ -98,6 +98,8 @@ def update_mode_img(state):
 
 print(f'{os.path.exists("/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4")}')
 
+os.spawnl(os.P_DETACH, '/./usr/bin/cvlc /./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4')
+
 while True:
     pass
 
