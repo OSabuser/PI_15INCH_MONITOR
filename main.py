@@ -13,6 +13,12 @@ uart0_port_name = "/./dev/ttyAMA0"
 uart0_baud = 115200
 path_to_video = "/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4"
 
+is_video_exist = os.path.exists(path_to_video)
+
+if is_video_exist:
+    command = ['/./usr/bin/cvlc', '--no-osd', path_to_video]
+    subprocess.call(command)
+
 # Create new layer object for GPU layer 1
 floor_l_layer = pydispmanx.dispmanxLayer(1)
 floor_r_layer = pydispmanx.dispmanxLayer(2)
@@ -97,13 +103,6 @@ def update_mode_img(state):
 
     return state[0]
 
-
-is_video_exist = os.path.exists(path_to_video)
-
-if is_video_exist:
-    command = ['/./usr/bin/cvlc', '--no-osd', path_to_video]
-    subprocess.call(command)
-
 # Список допустимых номеров этажей
 floor_list = list(map(str, range(allowable_floor_range[0], allowable_floor_range[1] + 1)))
 for idx, element in enumerate(floor_list):
@@ -127,7 +126,8 @@ while True:
             floor_number = data_str[1:3]  # Get floor number
             mode = data_str[4:6]  # Get direction state
             message_received = True
-            # For debug purposes -- > print(f"Floor: {floor_number}, mode: {mode}")
+            # For debug purposes -- >
+            print(f"Floor: {floor_number}, mode: {mode}")
 
     # Отрисовка изображений
     if message_received:
