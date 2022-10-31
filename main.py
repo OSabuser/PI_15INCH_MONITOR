@@ -17,18 +17,24 @@ icon_surface = pygame.image.frombuffer(icon_layer, icon_layer.size, 'RGBA')
 
 def update_floor_img(state):
     global floor_l_surface, floor_r_surface, floor_l_layer, floor_r_layer
+    redraw_need = False
+
     if state[0] is not state[1]:  # Draw floor number
 
-        del floor_l_surface
+        redraw_need = True if (state[0] // 10) != (state[1] // 10) else False
+
         del floor_r_surface
-        del floor_l_layer
         del floor_r_layer
 
-        floor_l_layer = pydispmanx.dispmanxLayer(1)
-        floor_r_layer = pydispmanx.dispmanxLayer(2)
-        floor_l_surface = pygame.image.frombuffer(floor_l_layer, floor_l_layer.size, 'RGBA')
-        floor_r_surface = pygame.image.frombuffer(floor_r_layer, floor_r_layer.size, 'RGBA')
+        # Перерисовка старшего разряда в случае, если меняется десяток
+        if redraw_need:
+            del floor_l_surface
+            del floor_l_layer
+            floor_l_layer = pydispmanx.dispmanxLayer(1)
+            floor_l_surface = pygame.image.frombuffer(floor_l_layer, floor_l_layer.size, 'RGBA')
 
+        floor_r_layer = pydispmanx.dispmanxLayer(2)
+        floor_r_surface = pygame.image.frombuffer(floor_r_layer, floor_r_layer.size, 'RGBA')
 
         if state[0] < 10:
             image = pygame.image.load(f'images/{state[0]}.png')
@@ -36,11 +42,13 @@ def update_floor_img(state):
         elif state[0] < allowable_floor_range[1] + 1:
             image = pygame.image.load(f'images/{state[0] % 10}.png')
             floor_r_surface.blit(image, floor_r_pos)
-            image = pygame.image.load(f'images/{state[0] // 10}.png')
-            floor_l_surface.blit(image, floor_l_pos)
+            if redraw_need:
+                image = pygame.image.load(f'images/{state[0] // 10}.png')
+                floor_l_surface.blit(image, floor_l_pos)
 
         # Trigger the redraw of the screen from the buffer
-        floor_l_layer.updateLayer()
+        if redraw_need:
+            floor_l_layer.updateLayer()
         floor_r_layer.updateLayer()
 
     return state[0]
