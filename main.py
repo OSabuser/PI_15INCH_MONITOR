@@ -69,11 +69,10 @@ def update_floor_img(state):
     return state[0]
 
 
-def update_mode_img(state_0):
+def update_mode_img(state):
     global icon_surface, icon_layer
 
-    print(f"RAW MODE: {state_0}")
-    if state_0[0] != state_0[1]:  # Draw icon image
+    if state[0] != state[1]:  # Draw icon image
 
         del icon_surface
         del icon_layer
@@ -81,17 +80,19 @@ def update_mode_img(state_0):
         icon_layer = pydispmanx.dispmanxLayer(3)
         icon_surface = pygame.image.frombuffer(icon_layer, icon_layer.size, 'RGBA')
 
-        if state_0[0] == "UP":
+        if state[0] == "UP":
             image = pygame.image.load('images/ARROW_UP.png')
             icon_surface.blit(image, icon_pos)
-        elif state_0[0] == "DL":
+        elif state[0] == "DL":
             image = pygame.image.load('images/ARROW_DOWN.png')
             icon_surface.blit(image, icon_pos)
+        elif state[0] == "XX":
+            image = pygame.image.load('images/LOST_CONNECTION.png')
+            icon_surface.blit(image, icon_pos)
 
-        print(f"REDRAW MODE IMG!!!")
         icon_layer.updateLayer()
 
-    return state_0[0]
+    return state[0]
 
 
 # Список допустимых номеров этажей
@@ -99,7 +100,7 @@ floor_list = list(map(str, range(allowable_floor_range[0], allowable_floor_range
 for idx, element in enumerate(floor_list):
     floor_list[idx] = element.rjust(2, '0')
 
-mode_list = ("NN", "DL", "UP")
+mode_list = ("NN", "DL", "UP", "XX")
 
 floor_number, mode = '', ''
 floor_state = [0, 0]
@@ -124,9 +125,10 @@ while True:
         message_received = False
         if floor_number in floor_list:
             floor_state[0] = int(floor_number)
-            print(f"RAW FLOOR: {floor_state[0]}")
+            # For debug purposes -- > print(f"RAW FLOOR: {floor_state[0]}")
             floor_state[1] = update_floor_img(floor_state)
 
         if mode in mode_list:
             arrow_state[0] = mode
+            # For debug purposes -- > print(f"RAW MODE: {arrow_state[0]}")
             arrow_state[1] = update_mode_img(arrow_state)
