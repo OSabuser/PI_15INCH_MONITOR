@@ -1,0 +1,1 @@
+root=PARTUUID=86f1b140-02 rootfstype=ext4 fsck.repair=yes rootwait

@@ -118,7 +118,7 @@ while True:
             floor_number = data_str[1:3]  # Get floor number
             mode = data_str[4:6]  # Get direction state
             message_received = True
-            print(f"Floor: {floor_number}, mode: {mode}")
+            # For debug purposes -- > print(f"Floor: {floor_number}, mode: {mode}")
 
     # Отрисовка изображений
     if message_received:
