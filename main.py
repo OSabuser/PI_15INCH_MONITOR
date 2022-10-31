@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw
 from dispmanx import DispmanX
 
 
-display = DispmanX(layer=1, pixel_format="RGBA", buffer_type="numpy")
+display = DispmanX(layer=1, pixel_format="RGBA", buffer_type="auto")
 display.width = 400
 display.height = 400
 
