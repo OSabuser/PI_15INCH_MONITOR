@@ -1,6 +1,7 @@
 import pydispmanx
 import pygame
 import serial
+import os
 from serial import SerialException
 
 floor_r_pos = (250, 284)
@@ -93,6 +94,12 @@ def update_mode_img(state):
         icon_layer.updateLayer()
 
     return state[0]
+
+
+print(f'{os.path.exists("/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4")}')
+
+while True:
+    pass
 
 
 # Список допустимых номеров этажей
