@@ -9,8 +9,7 @@ demoSurface = pygame.image.frombuffer(demolayer, demolayer.size, 'RGBA')
 color = (255, 255, 0)
 
 # Drawing Rectangle
-pygame.draw.rect(demoSurface, color,
-                 pygame.Rect(30, 30, 60, 60))
+pygame.draw.circle(demoSurface, (255,0,0), (int(demolayer.size[0]/2), int(demolayer.size[1]/2)), int(min(demolayer.size)/4), 0)
 
 # Trigger the redraw of the screen from the buffer
 demolayer.updateLayer()
