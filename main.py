@@ -14,13 +14,13 @@ floor_l_surface = pygame.image.frombuffer(floor_l_layer, floor_l_layer.size, 'RG
 floor_r_surface = pygame.image.frombuffer(floor_r_layer, floor_r_layer.size, 'RGBA')
 icon_surface = pygame.image.frombuffer(icon_layer, icon_layer.size, 'RGBA')
 
-image = pygame.image.load('/images/6.png')
+image = pygame.image.load('images/6.png')
 floor_r_surface.blit(image, floor_r_pos)
 
-image = pygame.image.load('/images/9.png')
+image = pygame.image.load('images/9.png')
 floor_l_surface.blit(image, floor_l_pos)
 
-image = pygame.image.load('/images/ARROW_UP.png')
+image = pygame.image.load('images/ARROW_UP.png')
 icon_surface.blit(image, icon_pos)
 
 # Trigger the redraw of the screen from the buffer
