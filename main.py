@@ -1,4 +1,4 @@
-import pydispmanx, pygame
+import pydispmanx, pygame, time
 # Create new layer object for GPU layer 1
 demolayer = pydispmanx.dispmanxLayer(1)
 # Create pyGame surface linked to the layer buffer
@@ -13,7 +13,9 @@ pygame.draw.circle(demoSurface, (255,0,0), (int(demolayer.size[0]/2), int(demola
 
 # Trigger the redraw of the screen from the buffer
 demolayer.updateLayer()
-
+while True:
+    print("Work flow!")
+    time.sleep(0.5)
 # Do other things, redraw layers etc
 
 # Delete surface before layer
