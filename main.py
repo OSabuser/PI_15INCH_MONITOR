@@ -1,4 +1,5 @@
 import pydispmanx, pygame, time
+
 # Create new layer object for GPU layer 1
 demolayer = pydispmanx.dispmanxLayer(1)
 # Create pyGame surface linked to the layer buffer
@@ -8,8 +9,12 @@ demoSurface = pygame.image.frombuffer(demolayer, demolayer.size, 'RGBA')
 # Choosing red color for the rectangle
 color = (255, 255, 0)
 
-# Drawing Rectangle
-pygame.draw.circle(demoSurface, (255,0,0), (int(demolayer.size[0]/2), int(demolayer.size[1]/2)), int(min(demolayer.size)/4), 0)
+# Creating the image surface
+image = pygame.image.load('pic_4.png')
+
+# putting our image surface on display
+# surface
+demoSurface.blit(image, (250, 250))
 
 # Trigger the redraw of the screen from the buffer
 demolayer.updateLayer()
@@ -21,6 +26,6 @@ while True:
 # Do other things, redraw layers etc
 
 # Delete surface before layer
-#del(demoSurface)
+# del(demoSurface)
 # Delete layer
-#del(demolayer)
+# del(demolayer)
