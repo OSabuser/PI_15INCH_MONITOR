@@ -11,6 +11,7 @@ icon_pos = (600, 284)
 allowable_floor_range = (1, 40)
 uart0_port_name = "/./dev/ttyAMA0"
 uart0_baud = 115200
+path_to_video = "/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4"
 
 # Create new layer object for GPU layer 1
 floor_l_layer = pydispmanx.dispmanxLayer(1)
@@ -97,13 +98,11 @@ def update_mode_img(state):
     return state[0]
 
 
-is_video_exist = os.path.exists("/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4")
-command = ['/./usr/bin/cvlc', '--no-osd', '/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4']
-if is_video_exist:
-    subprocess.call(command)
+is_video_exist = os.path.exists(path_to_video)
 
-while True:
-    pass
+if is_video_exist:
+    command = ['/./usr/bin/cvlc', '--no-osd', path_to_video]
+    subprocess.call(command)
 
 # Список допустимых номеров этажей
 floor_list = list(map(str, range(allowable_floor_range[0], allowable_floor_range[1] + 1)))
