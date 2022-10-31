@@ -1,12 +1,14 @@
 import time
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageShow
 from dispmanx import DispmanX
+import numpy
 
+display = DispmanX(layer=33, pixel_format="RGBA", buffer_type="auto")
 
-display = DispmanX(pixel_format="RGBA", buffer_type="auto")
-
-image = Image.open('pic_4.png')
+image = Image.open('1.png')
 draw = ImageDraw.Draw(image)
+numpy.copyto(display.buffer, image)
+
 display.update()
 
 while True:
