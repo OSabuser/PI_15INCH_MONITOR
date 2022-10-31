@@ -88,6 +88,7 @@ def update_mode_img(state):
             image = pygame.image.load('images/ARROW_DOWN.png')
             icon_surface.blit(image, icon_pos)
 
+        print(f"REDRAW MODE IMG!!!")
         icon_layer.updateLayer()
 
     return state[0]
