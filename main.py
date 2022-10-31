@@ -98,11 +98,9 @@ def update_mode_img(state):
 
 
 is_video_exist = os.path.exists("/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4")
-
+command = ['/./usr/bin/cvlc', '--no-osd', '/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4']
 if is_video_exist:
-    subprocess.call(['/./usr/bin/cvlc', '--no-osd',
-                     '/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4'],
-                    shell=True)
+    subprocess.call(command)
 
 while True:
     pass
