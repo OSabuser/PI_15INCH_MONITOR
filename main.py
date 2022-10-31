@@ -19,8 +19,10 @@ def update_floor_img(state):
     global floor_l_surface, floor_r_surface
     if state[0] is not state[1]:  # Draw floor number
 
-        #del floor_l_surface
-        #del floor_r_surface
+        del floor_l_surface
+        del floor_r_surface
+        floor_l_surface = pygame.image.frombuffer(floor_l_layer, floor_l_layer.size, 'RGBA')
+        floor_r_surface = pygame.image.frombuffer(floor_r_layer, floor_r_layer.size, 'RGBA')
 
         if state[0] < 10:
             image = pygame.image.load(f'images/{state[0]}.png')
