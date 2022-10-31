@@ -5,7 +5,6 @@ import os
 from serial import SerialException
 import subprocess
 
-
 floor_r_pos = (250, 284)
 floor_l_pos = (100, 284)
 icon_pos = (600, 284)
@@ -98,14 +97,13 @@ def update_mode_img(state):
     return state[0]
 
 
-print(f'{os.path.exists("/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4")}')
+is_video_exist = os.path.exists("/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4")
 
-#os.spawnl(os.P_DETACH, '/./usr/bin/cvlc /./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4')
+if is_video_exist:
+    subprocess.call(['/./usr/bin/cvlc', '--fullscreen /./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4'])
 
-subprocess.call(['/./usr/bin/cvlc', '/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4'])
 while True:
     pass
-
 
 # Список допустимых номеров этажей
 floor_list = list(map(str, range(allowable_floor_range[0], allowable_floor_range[1] + 1)))
