@@ -16,13 +16,19 @@ floor_r_surface = pygame.image.frombuffer(floor_r_layer, floor_r_layer.size, 'RG
 icon_surface = pygame.image.frombuffer(icon_layer, icon_layer.size, 'RGBA')
 
 def update_floor_img(state):
-    global floor_l_surface, floor_r_surface
+    global floor_l_surface, floor_r_surface, floor_l_layer, floor_r_layer
     if state[0] is not state[1]:  # Draw floor number
 
         del floor_l_surface
         del floor_r_surface
+        del floor_l_layer
+        del floor_r_layer
+
+        floor_l_layer = pydispmanx.dispmanxLayer(1)
+        floor_r_layer = pydispmanx.dispmanxLayer(2)
         floor_l_surface = pygame.image.frombuffer(floor_l_layer, floor_l_layer.size, 'RGBA')
         floor_r_surface = pygame.image.frombuffer(floor_r_layer, floor_r_layer.size, 'RGBA')
+
 
         if state[0] < 10:
             image = pygame.image.load(f'images/{state[0]}.png')
