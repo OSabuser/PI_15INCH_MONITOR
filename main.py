@@ -13,8 +13,10 @@ pygame.draw.circle(demoSurface, (255,0,0), (int(demolayer.size[0]/2), int(demola
 
 # Trigger the redraw of the screen from the buffer
 demolayer.updateLayer()
+
 while True:
     print("Work flow!")
+    print(f'Layer size:{demolayer.size}')
     time.sleep(0.5)
 # Do other things, redraw layers etc
 
