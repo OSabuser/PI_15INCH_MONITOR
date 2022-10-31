@@ -1,34 +1,23 @@
-import pydispmanx, time, pygame
-print(pydispmanx.getDisplays())
-print(pydispmanx.getDisplaySize())
-print(str(round(pydispmanx.getFrameRate(),2))+"Hz")
-print(pydispmanx.getPixelAspectRatio())
-testlayer = pydispmanx.dispmanxLayer(3);
-print("Layer successfully created")
-time.sleep(0.5)
-pygame_surface = pygame.image.frombuffer(testlayer, testlayer.size, 'RGBA')
-print("Surface successfully created")
-time.sleep(0.5)
-trials = 100
-print("Performance test starting")
-start=time.time()
-for n in  range(int(trials/2)):
-    pygame.draw.circle(pygame_surface, (255,0,0), (int(testlayer.size[0]/2), int(testlayer.size[1]/2)), int(min(testlayer.size)/4), 0)
-    testlayer.updateLayer()
-    pygame.draw.circle(pygame_surface, (0,0,255), (int(testlayer.size[0]/2), int(testlayer.size[1]/2)), int(min(testlayer.size)/4), 0)
-    testlayer.updateLayer()
-end=time.time()
-print("Performance test complete")
-print(str(round(trials/(end-start),2))+"fps")
-framelag = (trials/(end-start))/pydispmanx.getFrameRate()
-print(str(round(framelag*100,2))+"%")
-if(framelag < 0.75):
-    print("Tests under 75% max frame rate, performance may be impacted")
-time.sleep(0.5)
-del(pygame_surface)
-print("Surface successfully deleted")
-time.sleep(0.5)
-del(testlayer)
-print("Layer successfully deleted")
-time.sleep(0.5)
+import pydispmanx, pygame
+# Create new layer object for GPU layer 1
+demolayer = pydispmanx.dispmanxLayer(1)
+# Create pyGame surface linked to the layer buffer
+demoSurface = pygame.image.frombuffer(demolayer, demolayer.size, 'RGBA')
 
+# Use exsisting pyGame features to draw to the surface
+# Choosing red color for the rectangle
+color = (255, 255, 0)
+
+# Drawing Rectangle
+pygame.draw.rect(demoSurface, color,
+                 pygame.Rect(30, 30, 60, 60))
+
+# Trigger the redraw of the screen from the buffer
+demolayer.updateLayer()
+
+# Do other things, redraw layers etc
+
+# Delete surface before layer
+#del(demoSurface)
+# Delete layer
+#del(demolayer)
