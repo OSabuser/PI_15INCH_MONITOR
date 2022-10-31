@@ -98,6 +98,8 @@ while True:
             message_received = True
             print(f"Floor: {floor_number}, mode: {mode}")
 
-    #if message_received:
-       # message_received = False
-        #floor_state[1] = update_floor_img(floor_state)
+    if message_received:
+        message_received = False
+        if floor_number in ok_list:
+            floor_state[0] = int(floor_number)
+            floor_state[1] = update_floor_img(floor_state)
