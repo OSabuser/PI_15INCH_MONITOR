@@ -72,6 +72,7 @@ def update_floor_img(state):
 def update_mode_img(state):
     global icon_surface, icon_layer
 
+    print(f"RAW MODE: {state}")
     if state[0] is not state[1]:  # Draw icon image
 
         del icon_surface
@@ -127,5 +128,4 @@ while True:
 
         if mode in mode_list:
             arrow_state[0] = mode
-            print(f"RAW MODE: {arrow_state}")
             arrow_state[1] = update_mode_img(arrow_state)
