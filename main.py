@@ -14,7 +14,7 @@ image = pygame.image.load('pic_4.png')
 
 # putting our image surface on display
 # surface
-demoSurface.blit(image, (650, 450))
+demoSurface.blit(image, (650, 150))
 
 # Trigger the redraw of the screen from the buffer
 demolayer.updateLayer()
