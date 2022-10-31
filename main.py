@@ -69,11 +69,11 @@ def update_floor_img(state):
     return state[0]
 
 
-def update_mode_img(state):
+def update_mode_img(state_0):
     global icon_surface, icon_layer
 
-    print(f"RAW MODE: {state}")
-    if state[0] is not state[1]:  # Draw icon image
+    print(f"RAW MODE: {state_0}")
+    if state_0[0] is not state_0[1]:  # Draw icon image
 
         del icon_surface
         del icon_layer
@@ -81,17 +81,17 @@ def update_mode_img(state):
         icon_layer = pydispmanx.dispmanxLayer(3)
         icon_surface = pygame.image.frombuffer(icon_layer, icon_layer.size, 'RGBA')
 
-        if state[0] == "UP":
+        if state_0[0] == "UP":
             image = pygame.image.load('images/ARROW_UP.png')
             icon_surface.blit(image, icon_pos)
-        elif state[0] == "DL":
+        elif state_0[0] == "DL":
             image = pygame.image.load('images/ARROW_DOWN.png')
             icon_surface.blit(image, icon_pos)
 
         print(f"REDRAW MODE IMG!!!")
         icon_layer.updateLayer()
 
-    return state[0]
+    return state_0[0]
 
 
 # Список допустимых номеров этажей
