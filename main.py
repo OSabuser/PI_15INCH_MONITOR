@@ -73,7 +73,7 @@ def update_mode_img(state_0):
     global icon_surface, icon_layer
 
     print(f"RAW MODE: {state_0}")
-    if state_0[0] is not state_0[1]:  # Draw icon image
+    if state_0[0] != state_0[1]:  # Draw icon image
 
         del icon_surface
         del icon_layer
