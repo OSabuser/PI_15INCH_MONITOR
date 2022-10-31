@@ -1,9 +1,8 @@
 import pydispmanx
 import pygame
 import serial
-import os
 from serial import SerialException
-import subprocess
+
 
 floor_r_pos = (250, 284)
 floor_l_pos = (100, 284)
@@ -11,13 +10,7 @@ icon_pos = (600, 284)
 allowable_floor_range = (1, 40)
 uart0_port_name = "/./dev/ttyAMA0"
 uart0_baud = 115200
-path_to_video = "/./home/mach/PI_15INCH_MONITOR/video/test_1024x768.mp4"
 
-is_video_exist = os.path.exists(path_to_video)
-
-if is_video_exist:
-    command = ['/./usr/bin/cvlc', '--no-osd', path_to_video]
-    subprocess.call(command)
 
 # Create new layer object for GPU layer 1
 floor_l_layer = pydispmanx.dispmanxLayer(1)
