@@ -36,7 +36,7 @@ def update_floor_img(state):
         elif state[0] < allowable_floor_range[1] + 1:
             image = pygame.image.load(f'images/{state[0] % 10}.png')
             floor_r_surface.blit(image, floor_r_pos)
-            image = pygame.image.load(f'images/{state[0] / 10}.png')
+            image = pygame.image.load(f'images/{state[0] // 10}.png')
             floor_l_surface.blit(image, floor_l_pos)
 
         # Trigger the redraw of the screen from the buffer
@@ -57,8 +57,7 @@ def update_mode_img(state):
     return state[0]
 
 
-cnt = 0
-floor_state = [1, 0]
+floor_state = [0, 0]
 arrow_state = [0, 0]
 # Список допустимых номеров этажей
 ok_list = list(map(str, range(allowable_floor_range[0], allowable_floor_range[1] + 1)))
@@ -69,9 +68,4 @@ while True:
     if floor_state[0] == 40:
         floor_state[0] = 1
     time.sleep(3.5)
-# Do other things, redraw layers etc
 
-# Delete surface before layer
-# del(demoSurface)
-# Delete layer
-# del(demolayer)
