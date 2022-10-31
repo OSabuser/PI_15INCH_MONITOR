@@ -3,14 +3,12 @@ import pygame
 import serial
 from serial import SerialException
 
-
 floor_r_pos = (250, 284)
 floor_l_pos = (100, 284)
 icon_pos = (600, 284)
 allowable_floor_range = (1, 40)
 uart0_port_name = "/./dev/ttyAMA0"
 uart0_baud = 115200
-
 
 # Create new layer object for GPU layer 1
 floor_l_layer = pydispmanx.dispmanxLayer(1)
@@ -95,6 +93,7 @@ def update_mode_img(state):
         icon_layer.updateLayer()
 
     return state[0]
+
 
 # Список допустимых номеров этажей
 floor_list = list(map(str, range(allowable_floor_range[0], allowable_floor_range[1] + 1)))
