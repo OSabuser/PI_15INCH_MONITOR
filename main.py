@@ -4,8 +4,6 @@ from dispmanx import DispmanX
 
 
 display = DispmanX(layer=1, pixel_format="RGBA", buffer_type="auto")
-display.width = 400
-display.height = 400
 
 image = Image.open('pic_4.png')
 draw = ImageDraw.Draw(image)
