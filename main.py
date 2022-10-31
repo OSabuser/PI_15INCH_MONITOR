@@ -81,6 +81,9 @@ def update_mode_img(state):
 
 # Список допустимых номеров этажей
 ok_list = list(map(str, range(allowable_floor_range[0], allowable_floor_range[1] + 1)))
+for idx, element in enumerate(ok_list):
+    ok_list[idx] = element.rjust(2, '0')
+    
 floor_number, mode = '', ''
 floor_state, arrow_state = [0, 0], [0, 0]
 message_received = False
