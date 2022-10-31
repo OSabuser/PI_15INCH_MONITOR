@@ -1,53 +1,20 @@
-# 28_10_2022 AKIMOV DMITRY, MACH UNIT LLC
+import time
+from random import randint
+import numpy
+from PIL import Image, ImageDraw
+from dispmanx import DispmanX
 
-import pyglet
-from pyglet import image
-from pyglet.media import Player, load
-from pyglet.window import Window
-from pyglet.sprite import Sprite
-from pyglet.gl import *
 
-pyglet.options['search_local_libs'] = True
+def random_color_with_alpha():
+    return tuple(randint(0, 0xFF) for _ in range(3)) + (randint(0x44, 0xFF),)
 
-path_to_video = "test_1024x768.mp4"
 
-if __name__ == '__main__':
-    # Set alpha blending config
-    glEnable(GL_BLEND)
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+display = DispmanX(pixel_format="RGBA", buffer_type="numpy")
+image = Image.new(mode=display.pixel_format, size=display.size)
+draw = ImageDraw.Draw(image)
 
-    background = pyglet.graphics.OrderedGroup(0)
-    foreground = pyglet.graphics.OrderedGroup(1)
-
-   # player = Player()
-   # mp4_file = load(path_to_video)
-   # player.queue(mp4_file)
-   # player.loop = True
-
-    pic_img = Sprite(image.load('pic_4.png'), x=50, y=200, group=foreground)
-    floor_img = Sprite(image.load('1.png'), x=750, y=300, group=foreground)
-    animation = Sprite(pyglet.resource.animation(f"test.gif"), x=0, y=900, group=background)
-    win = Window(width=1024, height=768, fullscreen=False)
-    win.set_mouse_visible(visible=False)
-
-    floor_state = ['0', '0']
-    arrow_state = ['0', '0']
-    ok_list = ('1', '2', '3', '4', '5')
-    can_refresh = False
-    floor_number = ''
-    direction = ''
-    pic_img.visible = True
-   # player.play()
-
-    def draw_everything(dt):
-        win.clear()
-        animation.draw()
-        pic_img.draw()
-        floor_img.draw()
-
-    @win.event
-    def on_draw():
-        draw_everything(None)
-
-    pyglet.clock.schedule_interval(draw_everything, 1 / 30)
-    pyglet.app.run()
+for _ in range(20):
+    draw.rectangle(((0, 0), image.size), fill=random_color_with_alpha())
+    numpy.copyto(display.buffer, image)
+    display.update()
+    time.sleep(0.5)
