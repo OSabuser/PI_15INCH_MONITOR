@@ -123,8 +123,7 @@ while True:
         floor_number = floor_list[floor_idx]  # Get floor number
     else:
         message_received = True
-        floor_idx = 1
+        floor_idx = 0
         floor_number = floor_list[floor_idx]  # Get floor number
 
     time.sleep(3)
-    
