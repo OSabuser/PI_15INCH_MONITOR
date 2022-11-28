@@ -3,9 +3,9 @@ import pygame
 import time
 
 
-floor_r_pos = (250, 284)
-floor_l_pos = (100, 284)
-icon_pos = (600, 284)
+floor_r_pos = (250, 250)
+floor_l_pos = (100, 250)
+icon_pos = (600, 250)
 allowable_floor_range = (1, 40)
 
 
@@ -53,7 +53,7 @@ def update_floor_img(state):
         # Обновление программного слоя в GPU
         if redraw_need:
             floor_l_layer.updateLayer()
-            floor_r_layer.updateLayer()
+        floor_r_layer.updateLayer()
 
     return state[0]
 
@@ -95,7 +95,7 @@ floor_number, mode = '', ''
 floor_state = [0, 0]
 arrow_state = ["", ""]
 
-floor_number = "01"  # Get floor number
+floor_number = "03"  # Get floor number
 mode = "DL"  # Get direction state
 message_received = True
 
