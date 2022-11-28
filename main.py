@@ -117,7 +117,9 @@ while True:
             # For debug purposes -- > print(f"RAW MODE: {arrow_state[0]}")
             arrow_state[1] = update_mode_img(arrow_state)
 
-    time.sleep(3)
     if floor_idx < 40:
+        message_received = True
         floor_idx += 1
         floor_number = floor_list[floor_idx]  # Get floor number
+
+    time.sleep(3)
