@@ -95,8 +95,8 @@ floor_number, mode = '', ''
 floor_state = [0, 0]
 arrow_state = ["", ""]
 
-floor_number = "1"  # Get floor number
-mode = "NN"  # Get direction state
+floor_number = "01"  # Get floor number
+mode = "DL"  # Get direction state
 message_received = True
 
 
