@@ -1,5 +1,6 @@
 import pydispmanx
 import pygame
+import time
 
 
 floor_r_pos = (250, 284)
@@ -52,7 +53,7 @@ def update_floor_img(state):
         # Обновление программного слоя в GPU
         if redraw_need:
             floor_l_layer.updateLayer()
-        floor_r_layer.updateLayer()
+            floor_r_layer.updateLayer()
 
     return state[0]
 
