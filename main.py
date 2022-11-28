@@ -3,9 +3,9 @@ import pygame
 import time
 
 
-floor_r_pos = (250, 235)
-floor_l_pos = (100, 235)
-icon_pos = (600, 235)
+floor_r_pos = (250, 200)
+floor_l_pos = (100, 200)
+icon_pos = (600, 200)
 allowable_floor_range = (1, 40)
 
 
