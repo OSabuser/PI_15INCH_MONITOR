@@ -125,18 +125,18 @@ while True:
         message_received = True
         floor_idx = 8
         mode = "XX"
-        direction == "DOWNSTAIR"
-        floor_number = floor_list[floor_idx]  # Get floor number
+        direction = "DOWNSTAIR"
+        floor_number = floor_list[floor_idx]
     elif floor_idx > 0 and direction == "DOWNSTAIR":
         message_received = True
         floor_idx -= 1
         mode = "DL"
-        floor_number = floor_list[floor_idx]  # Get floor number
+        floor_number = floor_list[floor_idx]
     elif floor_idx == 0 and direction == "DOWNSTAIR":
         message_received = True
         floor_idx = 0
         mode = "UP"
-        direction == "UPSTAIR"
-        floor_number = floor_list[floor_idx]  # Get floor number
+        direction = "UPSTAIR"
+        floor_number = floor_list[floor_idx]
 
     time.sleep(3)
