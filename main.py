@@ -3,9 +3,9 @@ import pygame
 import time
 
 
-floor_r_pos = (250, 200)
+floor_r_pos = (150, 200)
 floor_l_pos = (100, 200)
-icon_pos = (600, 200)
+icon_pos = (550, 200)
 allowable_floor_range = (1, 40)
 
 
@@ -101,7 +101,7 @@ message_received = True
 floor_idx = 0
 floor_number = floor_list[floor_idx]  # Get floor number
 mode = "UP"  # Get direction state
-
+direction = "UPSTAIR"
 while True:
 
     # Отрисовка изображений
@@ -117,13 +117,26 @@ while True:
             # For debug purposes -- > print(f"RAW MODE: {arrow_state[0]}")
             arrow_state[1] = update_mode_img(arrow_state)
 
-    if floor_idx < 23:
+    if floor_idx < 8 and direction == "UPSTAIR":
         message_received = True
         floor_idx += 1
         floor_number = floor_list[floor_idx]  # Get floor number
-    else:
+    elif floor_idx == 8 and direction == "UPSTAIR":
+        message_received = True
+        floor_idx = 8
+        mode = "XX"
+        direction == "DOWNSTAIR"
+        floor_number = floor_list[floor_idx]  # Get floor number
+    elif floor_idx > 0 and direction == "DOWNSTAIR":
+        message_received = True
+        floor_idx -= 1
+        mode = "DL"
+        floor_number = floor_list[floor_idx]  # Get floor number
+    elif floor_idx == 0 and direction == "DOWNSTAIR":
         message_received = True
         floor_idx = 0
+        mode = "UP"
+        direction == "UPSTAIR"
         floor_number = floor_list[floor_idx]  # Get floor number
 
     time.sleep(3)
