@@ -1,14 +1,12 @@
 import pydispmanx
 import pygame
-import serial
-from serial import SerialException
+
 
 floor_r_pos = (250, 284)
 floor_l_pos = (100, 284)
 icon_pos = (600, 284)
 allowable_floor_range = (1, 40)
-uart0_port_name = "/./dev/ttyAMA0"
-uart0_baud = 115200
+
 
 # Create new layer object for GPU layer 1
 floor_l_layer = pydispmanx.dispmanxLayer(1)
@@ -19,16 +17,6 @@ icon_layer = pydispmanx.dispmanxLayer(3)
 floor_l_surface = pygame.image.frombuffer(floor_l_layer, floor_l_layer.size, 'RGBA')
 floor_r_surface = pygame.image.frombuffer(floor_r_layer, floor_r_layer.size, 'RGBA')
 icon_surface = pygame.image.frombuffer(icon_layer, icon_layer.size, 'RGBA')
-
-while True:
-    try:
-        ser = serial.Serial(port=uart0_port_name, baudrate=uart0_baud)  # open serial port
-    except SerialException:
-        print(f'{uart0_port_name} НЕДОСТУПЕН!\n')
-        pass
-    else:
-        print(f'{uart0_port_name} В РАБОТЕ!\n')
-        break
 
 
 def update_floor_img(state):
@@ -106,20 +94,12 @@ floor_number, mode = '', ''
 floor_state = [0, 0]
 arrow_state = ["", ""]
 
-message_received = False
+floor_number = "1"  # Get floor number
+mode = "NN"  # Get direction state
+message_received = True
+
 
 while True:
-
-    # Обработка сообщения, принятого по UART от STM32
-    if ser.inWaiting() > 0:
-        data_str = ser.read(ser.inWaiting()).decode('ascii')
-        # For debug purposes -- > print(data_str)
-        if len(data_str) == 6:
-            floor_number = data_str[1:3]  # Get floor number
-            mode = data_str[4:6]  # Get direction state
-            message_received = True
-            # For debug purposes -- >
-            print(f"Floor: {floor_number}, mode: {mode}")
 
     # Отрисовка изображений
     if message_received:
