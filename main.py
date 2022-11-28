@@ -123,7 +123,7 @@ while True:
         floor_number = floor_list[floor_idx]  # Get floor number
     elif floor_idx == 8 and direction == "UPSTAIR":
         message_received = True
-        floor_idx = 8
+        floor_idx = 9
         mode = "XX"
         direction = "DOWNSTAIR"
         floor_number = floor_list[floor_idx]
