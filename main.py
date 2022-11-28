@@ -95,10 +95,12 @@ floor_number, mode = '', ''
 floor_state = [0, 0]
 arrow_state = ["", ""]
 
-floor_number = "03"  # Get floor number
-mode = "DL"  # Get direction state
+
 message_received = True
 
+floor_idx = 0
+floor_number = floor_list[floor_idx]  # Get floor number
+mode = "UP"  # Get direction state
 
 while True:
 
@@ -114,3 +116,8 @@ while True:
             arrow_state[0] = mode
             # For debug purposes -- > print(f"RAW MODE: {arrow_state[0]}")
             arrow_state[1] = update_mode_img(arrow_state)
+
+    time.sleep(3)
+    if floor_idx < 40:
+        floor_idx += 1
+        floor_number = floor_list[floor_idx]  # Get floor number
